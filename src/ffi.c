@@ -3,6 +3,12 @@
 #include <linux/kernel.h>
 #include <linux/module.h>
 #include <linux/uaccess.h>
+#include <linux/slab.h>
+
+MODULE_AUTHOR("Sascha Grunert <mail@saschagrunert.de>");
+MODULE_DESCRIPTION("A simple kernel module");
+MODULE_LICENSE("MIT");
+MODULE_VERSION("0.1.0");
 
 struct module *owner = THIS_MODULE;
 
@@ -21,4 +27,7 @@ extern unsigned long copy_to_user_ffi(void *to, const void *from, unsigned long 
     return copy_to_user(to, from, count);
 };
 
-MODULE_LICENSE("GPL v2");
+extern int init_module(void);
+extern void cleanup_module(void);
+
+/* MODULE_LICENSE("GPL v2"); */
