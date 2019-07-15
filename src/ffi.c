@@ -21,4 +21,7 @@ extern unsigned long copy_to_user_ffi(void *to, const void *from, unsigned long 
     return copy_to_user(to, from, count);
 };
 
+extern int init_module(void);
+extern void cleanup_module(void);
+
 MODULE_LICENSE("GPL v2");
